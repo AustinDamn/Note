@@ -1,0 +1,31 @@
+git init
+git clone "git_url"
+working dir --> staging area --> repository
+as a --> b --> c
+git add [files or not]: a --> b
+git commit: b --> c
+git rm --coched [file] : b --> a
+git status
+git mv file-a file-b
+(單純用mv的話 還要手動在staging area操作新增刪除)
+git commit 會跳出vi 然後輸入上檔訊息
+或者直接打git commit -m "此版本註解"
+git commint --amend可以重修改已經註解過的版本註解
+empty folder won't be committed
+but you can add ".gitkeep" in empty folder for git-trace
+git help log(log的用法)
+git log --pretty=oneline
+git log --pretty=format:"%h %s"
+git tag 1.0.0 (可以當作里程碑之類)
+git branch(看現在的狀態)
+git branch [name]
+git checkout name(切到name的分支)
+git checkout master(切到主線)
+git branch -D [name](不能在同一條線內 刪除自己這條線)
+git merge [branch name] (先回到master線囉)
+git pull = "git fetch" + "git merge"
+git push origin master
+git push origin [my branch]  推一份branch到github上
+
+git clean -f : remove untrack files
+git stash: apply,pop,list,clear
