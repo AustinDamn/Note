@@ -5,6 +5,9 @@ as a --> b --> c
 git add [files or not]: a --> b
 git commit: b --> c
 git rm --coched [file] : b --> a
+    git rm 的指令執行的時候，會同時做兩件事：
+    刪除工作目錄快取的 'Gruntfile.js' 這個檔案 (用來標示這個刪除檔案的動作要列入版本控管)
+    刪除工作目錄下的 'Gruntfile.js' 這個實體檔案 (代表真的把這個實體檔案給刪除)
 git status
 git mv file-a file-b
 (單純用mv的話 還要手動在staging area操作新增刪除)
