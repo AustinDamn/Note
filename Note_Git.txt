@@ -1,21 +1,45 @@
+    在 Git 裡有兩個重要的資料結構，分別是「物件」與「索引」。
+    「物件」用來保存版本庫中所有檔案與版本紀錄，「索引」則是用來保存當下要進版本庫之前的目錄狀態。
+
 git init
 git clone "git_url"
-working dir --> staging area --> repository
-as a --> b --> c
+
 git add [files or not]: a --> b
 git commit: b --> c
+    要使用 Git 版本控管，你必須先建立「工作目錄」與「版本庫」。(mkdir, git init)
+    你要先在「工作目錄」進行開發，你可能會建立目錄、建立檔案、修改檔案、刪除檔案、... 等操作。
+    然後當你想提交一個新版本到 Git 的「儲存庫」裡，一定要先更新「索引」狀態。(git add, git mv, ...)
+    然後 Git 會依據「索引」當下的狀態，決定要把那些檔案提交到 Git 的「儲存庫」裡。(git status)
+    最後提交變更時 (git commit)，才會把版本資訊寫入到「物件儲存區」當中 (此時將會寫入 commit 物件)。
+
 git rm --coched [file] : b --> a
     git rm 的指令執行的時候，會同時做兩件事：
     刪除工作目錄快取的 'Gruntfile.js' 這個檔案 (用來標示這個刪除檔案的動作要列入版本控管)
     刪除工作目錄下的 'Gruntfile.js' 這個實體檔案 (代表真的把這個實體檔案給刪除)
+
 git status
+git reset
+    利用 git reset 重置目前工作目錄的索引狀態，但請注意，這個指令預設只會重置「索引狀態」，那些你用 git rm 刪除的目錄或檔案，還是用
+    git mv 更名的目錄或檔案，透過 git reset 都無法把「實體檔案」給救回來。
+git reset --hard
+    如果想把工作目錄也給還原到目前的最新版，則必須輸入以下指令：
+    
 git mv file-a file-b
-(單純用mv的話 還要手動在staging area操作新增刪除)
+    (單純用mv的話 還要手動在staging area操作新增刪除)
+
 git commit 會跳出vi 然後輸入上檔訊息
-或者直接打git commit -m "此版本註解"
-git commint --amend可以重修改已經註解過的版本註解
-empty folder won't be committed
-but you can add ".gitkeep" in empty folder for git-trace
+    或者直接打git commit -m "此版本註解"
+    empty folder won't be committed
+    but you can add ".gitkeep" in empty folder for git-trace
+git commint --amend
+    最常見的復原發生在太早提交更新，也許忘了加入某些檔案、或者搞砸了提交的訊息。 若想要試著重新提交，可試著加上 --amend 選項：
+    ex:
+        $ git commit -m 'initial commit'
+        $ git add forgotten_file
+        $ git commit --amend
+        這些命令的僅僅會提交一個更新，第二個被提交的更新會取代第一個。
+
+
 git help log(log的用法)
 git log --pretty=oneline
 git log --pretty=format:"%h %s"
@@ -24,6 +48,9 @@ git branch(看現在的狀態)
 git branch [name]
 git checkout name(切到name的分支)
 git checkout master(切到主線)
+git checkout master Gruntfile.js
+    如果檔案編輯到一半，發現被改壞了，你希望能救回改沒修改前的版本，這時你可以利用這指令還原檔案：
+
 git branch -D [name](不能在同一條線內 刪除自己這條線)
 git merge [branch name] (先回到master線囉)
 git pull = "git fetch" + "git merge"
