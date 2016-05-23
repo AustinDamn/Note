@@ -1,6 +1,7 @@
     在 Git 裡有兩個重要的資料結構，分別是「物件」與「索引」。
     「物件」用來保存版本庫中所有檔案與版本紀錄，「索引」則是用來保存當下要進版本庫之前的目錄狀態。
-
+git config --global user.name "John Doe"
+git config --global user.email johndoe@example.com
 git init
 git clone "git_url"
 
