@@ -1,3 +1,13 @@
+
+Win7:
+  安裝Django
+    pip install Django==1.7.7
+  建立新網站
+    django-admin.py startproject <website-name>
+  啟動server
+    cd dango_site
+    python manage.py runserver
+    確認網址  http://127.0.0.1:8000/
 "python manage.py sql author" 變成下面這三個動作了
 python manage.py makemigrations [app_name]
 python manage.py sqlmigrate [app_name] 0001
