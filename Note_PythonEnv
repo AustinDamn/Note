@@ -1,0 +1,17 @@
+Win7:
+   1. 安裝python27後，將目錄C:\Python27\Scripts加入環境變數
+   2. 開"管理者權限"的CMD 裝虛擬環境easy_install virtualenv
+   
+   使用 virtualenv 與 pip 的流程簡述如下：
+    1.使用 virtualenv 建立開發環境
+      virtualenv <your_python_project_name>
+    2.啟動虛擬開發環境
+      <your_python_project_name>\Scripts\activate
+    3.停止虛擬開發環境
+      deactivate
+    4.使用 pip 安裝 Python 套件
+    5.匯出目前安裝的所有套件與版本，並更新專案 requirement 檔案
+      匯出目前所有已安裝套件與版本的指令
+      pip freeze > requirements.txt
+      安裝 requirements.txt 內的所有套件指令如下
+      pip install -r requirements.txt
