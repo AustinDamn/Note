@@ -1,9 +1,13 @@
 
 Win7:
   安裝Django
-    pip install Django==1.7.7
+    pip install Django<1.8
+    
   建立新網站
-    django-admin.py startproject <website-name>
+    (django) c:\workspace\python>python -m django-admin startproject my_new_project
+    In oficial documentation, I found this: http://docs.python.org/2/using/cmdline.html?highlight=#-m
+    "When called with -m module-name, the given module is located on the Python module path and executed as a script."
+    
   啟動server
     cd dango_site
     python manage.py runserver
